@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
   "id": "ap-sign-client",
-  "publisher": "SignClient",
-  "version": "1.0.0",
+  "publisher": "Dan-Siegel",
+  "version": "0.1.0",
   "name": "NuGet Sign Client",
   "description": "Adds task to run the Sign Client and sign NuGet artifacts",
   "public": false,
@@ -14,6 +14,23 @@
     {
       "id": "Microsoft.VisualStudio.Services"
     }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "content": {
+    "details": {
+      "path": "ReadMe.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "tags": [
+    "SignClient", 
+    "SignServer",
+    "SignService",
+    "NuGet"
   ],
   "links": {
     "home": {
