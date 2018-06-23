@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/vsts-task-lib/master/tasks.schema.json",
+  "id": "b5aa1c78-ea96-4f5e-8fd8-f7cb210588f0",
+  "name": "package-sign-client",
+  "friendlyName": "Package Sign Client",
+  "description": "Sign NuGet Packages using the SignServer",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Dan Siegel",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "NuGet Sign Client",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "signClientUser",
+      "type": "string",
+      "label": "Sign Client User",
+      "required": true,
+      "defaultValue": "",
+      "helpMarkDown": "domainuser@contoso.com"
+    },
+    {
+      "name": "signClientPassword",
+      "type": "string",
+      "label": "Sign Client Password",
+      "required": true,
+      "defaultValue": "",
+      "helpMarkDown": "securePassword"
+    },
+    {
+      "name": "artifactSearchPattern",
+      "type": "string",
+      "label": "NuGet Search Directory",
+      "required": true,
+      "defaultValue": "$(Build.ArtifactStagingDirectory)\\*.nupkg",
+      "helpMarkDown": "Search Pattern like `**\\*.nupkg` or `$(Build.ArtifactStagingDirectory)\\*.nupkg`"
+    },
+    {
+      "name": "appSettingsFilePath",
+      "type": "filePath",
+      "label": "App Settings File Path",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "Path to the appsettings.json for the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
+    },
+    {
+      "name": "fileListFilePath",
+      "type": "filePath",
+      "label": "File List File Path",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "Path to the filelist.txt. Note that wildcards are supported. See more information on the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
+    },
+    {
+      "name": "appSettings",
+      "type": "multiLine",
+      "label": "App Settings",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "appsettings.json content for the [SignClient](https://github.com/onovotny/SignService#client-configuration)."
+    },
+    {
+      "name": "fileList",
+      "type": "multiLine",
+      "label": "File List",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "filelist.txt content. May contain multiple patterns, one per line, with wildcards. See more on the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
+    },
+    {
+      "name": "projectName",
+      "type": "string",
+      "label": "Project Name",
+      "required": true,
+      "defaultValue": "",
+      "helpMarkDown": "Name of the Project"
+    },
+    {
+      "name": "projectDescription",
+      "type": "string",
+      "label": "Project Description",
+      "required": true,
+      "defaultValue": "",
+      "helpMarkDown": "Project Description"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "label": "Project URL",
+      "required": true,
+      "defaultValue": "",
+      "helpMarkDown": "Project URL"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "task.ps1",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}
