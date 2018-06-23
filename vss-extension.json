@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "ap-sign-client",
   "publisher": "Dan-Siegel",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "name": "NuGet Sign Client",
   "description": "Adds task to run the Sign Client and sign NuGet artifacts",
   "public": false,
@@ -46,6 +46,9 @@
   "branding": {
     "color": "rgb(0,0,0)",
     "theme": "dark"
+  },
+  "images": {
+    "default": "images/icon.png"
   },
   "files": [
     {
