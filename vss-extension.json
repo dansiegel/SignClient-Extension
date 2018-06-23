@@ -43,6 +43,10 @@
       "uri": "https://github.com/dansiegel/SignClient-Extension/issues"
     }
   },
+  "branding": {
+    "color": "rgb(0,0,0)",
+    "theme": "dark"
+  },
   "files": [
     {
       "path": "tasks/SignClient"

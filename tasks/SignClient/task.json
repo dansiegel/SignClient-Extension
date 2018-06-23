@@ -50,20 +50,24 @@
       "helpMarkDown": "Search Pattern like `**\\*.nupkg` or `$(Build.ArtifactStagingDirectory)\\*.nupkg`"
     },
     {
+      "name": "appSettingsType",
+      "type": "radio",
+      "label": "AppSettings.json Type",
+      "required": true,
+      "defaultValue": "file",
+      "options": {
+        "file": "File",
+        "inline": "Inline"
+      }
+    },
+    {
       "name": "appSettingsFilePath",
       "type": "filePath",
       "label": "App Settings File Path",
       "required": false,
       "defaultValue": "",
-      "helpMarkDown": "Path to the appsettings.json for the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
-    },
-    {
-      "name": "fileListFilePath",
-      "type": "filePath",
-      "label": "File List File Path",
-      "required": false,
-      "defaultValue": "",
-      "helpMarkDown": "Path to the filelist.txt. Note that wildcards are supported. See more information on the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
+      "helpMarkDown": "Path to the appsettings.json for the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
+      "visibleRule": "appSettingsType == file"
     },
     {
       "name": "appSettings",
@@ -71,7 +75,28 @@
       "label": "App Settings",
       "required": false,
       "defaultValue": "",
-      "helpMarkDown": "appsettings.json content for the [SignClient](https://github.com/onovotny/SignService#client-configuration)."
+      "helpMarkDown": "appsettings.json content for the [SignClient](https://github.com/onovotny/SignService#client-configuration).",
+      "visibleRule": "appSettingsType = inline"
+    },
+    {
+      "name": "fileListType",
+      "type": "radio",
+      "label": "FileList.txt Type",
+      "required": true,
+      "defaultValue": "file",
+      "options": {
+        "file": "File",
+        "inline": "Inline"
+      }
+    },
+    {
+      "name": "fileListFilePath",
+      "type": "filePath",
+      "label": "File List File Path",
+      "required": false,
+      "defaultValue": "",
+      "helpMarkDown": "Path to the filelist.txt. Note that wildcards are supported. See more information on the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
+      "visibleRule": "fileListType == file"
     },
     {
       "name": "fileList",
@@ -79,7 +104,8 @@
       "label": "File List",
       "required": false,
       "defaultValue": "",
-      "helpMarkDown": "filelist.txt content. May contain multiple patterns, one per line, with wildcards. See more on the [SignClient](https://github.com/onovotny/SignService#client-configuration)"
+      "helpMarkDown": "filelist.txt content. May contain multiple patterns, one per line, with wildcards. See more on the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
+      "visibleRule": "fileListType = inline"
     },
     {
       "name": "projectName",
