@@ -14,7 +14,7 @@
   "version": {
     "Major": 0,
     "Minor": 1,
-    "Patch": 3
+    "Patch": 113
   },
   "instanceNameFormat": "NuGet Sign Client",
   "groups": [
@@ -31,7 +31,7 @@
       "label": "Sign Client User",
       "required": true,
       "defaultValue": "",
-      "helpMarkDown": "domainuser@contoso.com"
+      "helpMarkDown": "The user account for the Sign Client such as `domainuser@contoso.com`. This can be a Build variable such as `$(SignClientUser)`."
     },
     {
       "name": "signClientPassword",
@@ -39,7 +39,7 @@
       "label": "Sign Client Password",
       "required": true,
       "defaultValue": "",
-      "helpMarkDown": "securePassword"
+      "helpMarkDown": "The user password for the Sign Client such as `mySecurePassword`. This can be a Build variable such as `$(SignClientPassword)`."
     },
     {
       "name": "artifactSearchPattern",
@@ -58,7 +58,8 @@
       "options": {
         "file": "File",
         "inline": "Inline"
-      }
+      },
+      "helpMarkDown": "Specifies whether to use a file from the source repository, or an Inline value in the Build."
     },
     {
       "name": "appSettingsFilePath",
@@ -81,27 +82,28 @@
     {
       "name": "fileListType",
       "type": "radio",
-      "label": "FileList.txt Type",
+      "label": "Filter File Type",
       "required": true,
       "defaultValue": "file",
       "options": {
         "file": "File",
         "inline": "Inline"
-      }
+      },
+      "helpMarkDown": "Specifies whether to use a file from the source repository, or an Inline value in the Build."
     },
     {
       "name": "fileListFilePath",
       "type": "filePath",
-      "label": "File List File Path",
+      "label": "Filter File Path",
       "required": false,
       "defaultValue": "",
-      "helpMarkDown": "Path to the filelist.txt. Note that wildcards are supported. See more information on the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
+      "helpMarkDown": "Path to the filter file such as `filelist.txt`. See more information on the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
       "visibleRule": "fileListType == file"
     },
     {
       "name": "fileList",
       "type": "multiLine",
-      "label": "File List",
+      "label": "File Filters",
       "required": false,
       "defaultValue": "",
       "helpMarkDown": "filelist.txt content. May contain multiple patterns, one per line, with wildcards. See more on the [SignClient](https://github.com/onovotny/SignService#client-configuration)",
@@ -133,12 +135,9 @@
     }
   ],
   "execution": {
-    "PowerShell3": {
+    "PowerShell": {
       "target": "$(currentDirectory)\\task.ps1",
-      "workingDirectory": "$(currentDirectory)",
-      "platforms": [
-        "windows"
-      ]
+      "workingDirectory": "$(currentDirectory)"
     }
   }
 }
