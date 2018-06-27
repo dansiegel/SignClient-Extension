@@ -2,10 +2,10 @@
   "manifestVersion": 1,
   "id": "ap-sign-client",
   "publisher": "Dan-Siegel",
-  "version": "0.1.113",
+  "version": "0.1.114",
   "name": "NuGet Sign Client",
   "description": "Adds task to run the Sign Client and sign NuGet artifacts",
-  "public": false,
+  "public": true,
   "repository": {
     "type": "git",
     "uri": "https://github.com/dansiegel/SignClient-Extension"
@@ -48,7 +48,8 @@
     "theme": "dark"
   },
   "images": {
-    "default": "images/icon.png"
+    "default": "images/icon.png",
+    "large": "images/icon-large.png"
   },
   "files": [
     {
