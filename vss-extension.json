@@ -47,9 +47,8 @@
     "color": "rgb(0,0,0)",
     "theme": "dark"
   },
-  "images": {
-    "default": "images/icon.png",
-    "large": "images/icon-large.png"
+  "icons": {
+    "default": "images/extension-icon.png"
   },
   "files": [
     {
